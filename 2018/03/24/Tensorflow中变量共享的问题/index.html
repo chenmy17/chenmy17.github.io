@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="With great power comes great responsibility.  First Blog折腾了两天，Hexo框架➕GitHub部署➕域名解析终于简单搭起来了一个博客。很早就想用博客记录一下平时学习上课上遇到的问题👻，现在正好趁着实验室没什么事情玩一玩，希望自己能够坚持下去吧嘻嘻（狗头 自己脑补）。">
+<meta name="description" content="Tensorflow中变量共享的问题在TensorFlow中提供了通过变量名来创建或者获取一个变量的机制，通过这个机制在不同的函数中可以直接通过名字来使用变量，而不需要将变量以形参的形式传递给函数。Tensorflow提供了三种创建变量的方式，tf.placeholder,tf.Variable,tf.get_variable三种方式。 三种方式定义变量试着在TensorFlow中分别用三种方式定">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="First Blog">
-<meta property="og:url" content="http://yoursite.com/2018/03/15/First Blog/index.html">
+<meta property="og:title" content="Tensorflow中变量共享的问题">
+<meta property="og:url" content="http://yoursite.com/2018/03/24/Tensorflow中变量共享的问题/index.html">
 <meta property="og:site_name" content="chenmy&#39;s blog">
-<meta property="og:description" content="With great power comes great responsibility.  First Blog折腾了两天，Hexo框架➕GitHub部署➕域名解析终于简单搭起来了一个博客。很早就想用博客记录一下平时学习上课上遇到的问题👻，现在正好趁着实验室没什么事情玩一玩，希望自己能够坚持下去吧嘻嘻（狗头 自己脑补）。">
+<meta property="og:description" content="Tensorflow中变量共享的问题在TensorFlow中提供了通过变量名来创建或者获取一个变量的机制，通过这个机制在不同的函数中可以直接通过名字来使用变量，而不需要将变量以形参的形式传递给函数。Tensorflow提供了三种创建变量的方式，tf.placeholder,tf.Variable,tf.get_variable三种方式。 三种方式定义变量试着在TensorFlow中分别用三种方式定">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T14:27:48.040Z">
+<meta property="og:updated_time" content="2018-03-24T08:06:25.200Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="First Blog">
-<meta name="twitter:description" content="With great power comes great responsibility.  First Blog折腾了两天，Hexo框架➕GitHub部署➕域名解析终于简单搭起来了一个博客。很早就想用博客记录一下平时学习上课上遇到的问题👻，现在正好趁着实验室没什么事情玩一玩，希望自己能够坚持下去吧嘻嘻（狗头 自己脑补）。">
+<meta name="twitter:title" content="Tensorflow中变量共享的问题">
+<meta name="twitter:description" content="Tensorflow中变量共享的问题在TensorFlow中提供了通过变量名来创建或者获取一个变量的机制，通过这个机制在不同的函数中可以直接通过名字来使用变量，而不需要将变量以形参的形式传递给函数。Tensorflow提供了三种创建变量的方式，tf.placeholder,tf.Variable,tf.get_variable三种方式。 三种方式定义变量试着在TensorFlow中分别用三种方式定">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/15/First Blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/24/Tensorflow中变量共享的问题/"/>
 
 
 
 
 
-  <title>First Blog | chenmy's blog</title>
+  <title>Tensorflow中变量共享的问题 | chenmy's blog</title>
   
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/First Blog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/Tensorflow中变量共享的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenmy">
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">First Blog</h1>
+          <h1 class="post-title" itemprop="name headline">Tensorflow中变量共享的问题</h1>
         
 
         <div class="post-meta">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T21:08:13+08:00">
-                2018-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T16:04:49+08:00">
+                2018-03-24
               </time>
             
 
@@ -335,9 +335,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/15/First Blog/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/24/Tensorflow中变量共享的问题/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/15/First Blog/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/24/Tensorflow中变量共享的问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,9 +365,36 @@
       
 
       
-        <blockquote class="blockquote-center"><p>With great power comes great responsibility.</p>
-</blockquote>
-<h1 id="First-Blog"><a href="#First-Blog" class="headerlink" title="First Blog"></a>First Blog</h1><p>折腾了两天，Hexo框架➕GitHub部署➕域名解析终于简单搭起来了一个博客。很早就想用博客记录一下平时学习上课上遇到的问题👻，现在正好趁着实验室没什么事情玩一玩，希望自己能够坚持下去吧嘻嘻（狗头 自己脑补）。</p>
+        <h1 id="Tensorflow中变量共享的问题"><a href="#Tensorflow中变量共享的问题" class="headerlink" title="Tensorflow中变量共享的问题"></a>Tensorflow中变量共享的问题</h1><p>在TensorFlow中提供了通过变量名来创建或者获取一个变量的机制，通过这个机制在不同的函数中可以直接通过名字来使用变量，而不需要将变量以形参的形式传递给函数。Tensorflow提供了三种创建变量的方式，tf.placeholder,tf.Variable,tf.get_variable三种方式。</p>
+<h2 id="三种方式定义变量"><a href="#三种方式定义变量" class="headerlink" title="三种方式定义变量"></a>三种方式定义变量</h2><p>试着在TensorFlow中分别用三种方式定义变量，观察它们的区别。</p>
+<h3 id="tf-placeholder-方式"><a href="#tf-placeholder-方式" class="headerlink" title="tf.placeholder()方式"></a>tf.placeholder()方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as  tf</span><br><span class="line">v1 = tf.placeholder(tf.float32, shape=[1,2,3])</span><br><span class="line">print v1.name</span><br><span class="line">v1 = tf.placeholder(tf.float32, shape=[1,2,3], name=&apos;ts&apos;)</span><br><span class="line">print v1.name</span><br><span class="line">v1 = tf.placeholder(tf.float32, shape=[1,2,3], name=&apos;ts&apos;)</span><br><span class="line">print v1.name</span><br><span class="line">print type(v1)</span><br><span class="line">print v1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Placeholder:0</span><br><span class="line">ts:0</span><br><span class="line">ts_1:0</span><br><span class="line">&lt;class &apos;tensorflow.python.framework.ops.Tensor&apos;&gt;</span><br><span class="line">Tensor(&quot;ts_1:0&quot;, shape=(1, 2, 3), dtype=float32)</span><br></pre></td></tr></table></figure>
+<h3 id="tf-Variable-方式"><a href="#tf-Variable-方式" class="headerlink" title="tf.Variable()方式"></a>tf.Variable()方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">v2 = tf.Variable([1,2], dtype=tf.float32)</span><br><span class="line">print v2.name</span><br><span class="line">v2 = tf.Variable([1,2], dtype=tf.float32, name=&apos;Y&apos;)</span><br><span class="line">print v2.name</span><br><span class="line">v2 = tf.Variable([1,2], dtype=tf.float32, name=&apos;Y&apos;)</span><br><span class="line">print v2.name</span><br><span class="line">print type(v2)</span><br><span class="line">print v2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Variable:0</span><br><span class="line">Y:0</span><br><span class="line">Y_1:0</span><br><span class="line">&lt;class &apos;tensorflow.python.ops.variables.Variable&apos;&gt;</span><br><span class="line">&lt;tf.Variable &apos;Y_1:0&apos; shape=(2,) dtype=float32_ref&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="tf-get-variable-方式"><a href="#tf-get-variable-方式" class="headerlink" title="tf.get_variable()方式"></a>tf.get_variable()方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 对于tf.get_variable()方法来说，name是一个必填的参数</span><br><span class="line">v3 = tf.get_variable(name = &apos;fl&apos;, shape=[])</span><br><span class="line">print v3.name</span><br><span class="line">v4 = tf.get_variable(name = &apos;fl&apos;, shape=[2])</span><br><span class="line">print v4.name</span><br><span class="line">print type(v3)</span><br><span class="line">print v3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fl:0</span><br><span class="line">#ValueError</span><br><span class="line">ValueError: Variable fl already exists, disallowed. Did you mean to set reuse=True in VarScope? Originally defined at:</span><br><span class="line">...</span><br><span class="line">#此处报了一个Value错误</span><br><span class="line">&lt;class &apos;tensorflow.python.ops.variables.Variable&apos;&gt;</span><br><span class="line">&lt;tf.Variable &apos;fl:0&apos; shape=() dtype=float32_ref&gt;</span><br></pre></td></tr></table></figure>
+<p>再来做一个小小的实验</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#由上述的实验可以看出name=&apos;fl&apos;的变量和v3冲突，所以报错，</span><br><span class="line">#此处v3,v4都是通过tf.get_variable()方法赋值所以产生冲突。</span><br><span class="line">v4 = tf.get_variable(name=&apos;Y&apos;, shape=[1])</span><br><span class="line">print type(v4)</span><br><span class="line">print v4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;class &apos;tensorflow.python.ops.variables.Variable&apos;&gt;</span><br><span class="line">&lt;tf.Variable &apos;Y_2:0&apos; shape=() dtype=float32_ref&gt;</span><br></pre></td></tr></table></figure>
+<p>发现，’Y’变量名虽然已经被占用了，但是在TensorFlow中并不会对非tf.get_variable()方法产生命名冲突。<br>下面就用tf.trainable_variables()函数查看工作区的变量。tf.trainable_variables()可以将所有trainable=True的变量以list的形式返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vs = tf.trainable_variables()</span><br><span class="line">#此处的vs是一个list</span><br><span class="line">print len(vs)</span><br><span class="line">for v in vs:</span><br><span class="line">    print v</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">&lt;tf.Variable &apos;Variable:0&apos; shape=(2,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;Y:0&apos; shape=(2,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;Y_1:0&apos; shape=(2,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;fl:0&apos; shape=() dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;Y_2:0&apos; shape=() dtype=float32_ref&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>👆的实验可以得出一个简单的结论，就是只有通过tf.get_variable()方式创建的变量会发生命名冲突，并且tf.get_variable()与其他变量创建的方式也不会发生命名冲突。<br>简单总结一下三种变量命名的方式。</p>
+<ol>
+<li>tf.placeholder()<br><em>trainable=False</em></li>
+<li>tf.Variable()<br><em>trainable=True/False</em></li>
+<li>tf.get_variable()<br>一般与tf.variable_scope()一起使用来实现神经网络中的变量共享问题。</li>
+</ol>
+<h2 id="命名空间和变量空间"><a href="#命名空间和变量空间" class="headerlink" title="命名空间和变量空间"></a>命名空间和变量空间</h2><p>TensorFlow中有两种命名空间，name_scope和variable_scope</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">with tf.name_scope(&apos;nspace&apos;):</span><br><span class="line">    v1 = tf.Variable([1], name=&apos;v1&apos;)</span><br><span class="line">    with tf.variable_scope(&apos;vspace&apos;):</span><br><span class="line">        v2 = tf.Variable([1], name=&apos;v2&apos;)</span><br><span class="line">        v3 = tf.get_variable(name=&apos;v3&apos;,shape=[])</span><br><span class="line">print &apos;v1.name:&apos;, v1.name</span><br><span class="line">print &apos;v2.name:&apos;, v2.name</span><br><span class="line">print &apos;v3.name:&apos;, v3.name</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v1.name: nspace/v1:0</span><br><span class="line">v2.name: nspace/vspace/v2:0</span><br><span class="line">v3.name: vspace/v3:0</span><br></pre></td></tr></table></figure>
+<p>可以看到用tf.get_variable()方法创建的变量不会受tf.name_scope()命名空间的影响。而tf.get_variable()和tf.variable_scope()一起实现了变量的共享。</p>
+<h3 id="tf-Variable-创建变量"><a href="#tf-Variable-创建变量" class="headerlink" title="tf.Variable()创建变量"></a>tf.Variable()创建变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#首先清空当前工作区的变量</span><br><span class="line">import tensorflow as tf</span><br><span class="line">def my_image_filter():</span><br><span class="line">    conv1_weights = tf.Variable(tf.random_normal([5,5,32,32]),name=&apos;conv1_weights&apos;)</span><br><span class="line">    conv1_biase = tf.Variable(tf.zeros([32]),name=&apos;conv1_biases&apos;)</span><br><span class="line">    conv2_weights = tf.Variable(tf.random_normal([5,5,32,32]),name=&apos;conv2_weights&apos;)</span><br><span class="line">    conv2_biases = tf.Variable(tf.zeros([32]),name=&apos;conv2_biases&apos;)</span><br><span class="line">    return None</span><br><span class="line">    </span><br><span class="line">#First call</span><br><span class="line">result1 = my_image_filter()</span><br><span class="line">#Another call</span><br><span class="line">result2 = my_image_filter()</span><br><span class="line">#返回所有可训练的变量到vs列表中</span><br><span class="line">vs = tf.trainable_variables()</span><br><span class="line">print &apos;There are %d trainable_variables in the Graph:&apos; % len(vs)</span><br><span class="line">for v in vs:</span><br><span class="line">    print v</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">There are 8 trainable_variables in the Graph:</span><br><span class="line">&lt;tf.Variable &apos;conv1_weights:0&apos; shape=(5, 5, 32, 32) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv1_biases:0&apos; shape=(32,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv2_weights:0&apos; shape=(5, 5, 32, 32) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv2_biases:0&apos; shape=(32,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv1_weights_1:0&apos; shape=(5, 5, 32, 32) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv1_biases_1:0&apos; shape=(32,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv2_weights_1:0&apos; shape=(5, 5, 32, 32) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;conv2_biases_1:0&apos; shape=(32,) dtype=float32_ref&gt;</span><br></pre></td></tr></table></figure>
+<p>工作区内有8个变量，因为调用了两次my_image_filter()函数，每调用一次都会重新创建4个变量。</p>
+<h3 id="用tf-get-variable-创建变量"><a href="#用tf-get-variable-创建变量" class="headerlink" title="用tf.get_variable()创建变量"></a>用tf.get_variable()创建变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">def conv_relu(kernel_shape, bias_shape):</span><br><span class="line">    # Create variable named &quot;weights&quot;.</span><br><span class="line">    weights = tf.get_variable(&quot;weights&quot;, kernel_shape, initializer=tf.random_normal_initializer())</span><br><span class="line">    # Create variable named &quot;biases&quot;.</span><br><span class="line">    biases = tf.get_variable(&quot;biases&quot;, bias_shape, initializer=tf.constant_initializer(0.0))</span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def my_image_filter():</span><br><span class="line">    with tf.variable_scope(&quot;conv1&quot;):</span><br><span class="line">        # Variables created here will be named &quot;conv1/weights&quot;, &quot;conv1/biases&quot;.</span><br><span class="line">        relu1 = conv_relu([5, 5, 32, 32], [32])</span><br><span class="line">    with tf.variable_scope(&quot;conv2&quot;):</span><br><span class="line">        # Variables created here will be named &quot;conv2/weights&quot;, &quot;conv2/biases&quot;.</span><br><span class="line">        return conv_relu( [5, 5, 32, 32], [32])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with tf.variable_scope(&quot;image_filters&quot;) as scope:</span><br><span class="line">    result1 = my_image_filter()</span><br><span class="line">    scope.reuse_variables()</span><br><span class="line">    result2 = my_image_filter()</span><br><span class="line"></span><br><span class="line">vs = tf.trainable_variables()</span><br><span class="line">print &apos;There are %d train_able_variables in the Graph: &apos; % len(vs)</span><br><span class="line">for v in vs:</span><br><span class="line">    print v</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">There are 4 train_able_variables in the Graph: </span><br><span class="line">&lt;tf.Variable &apos;image_filters/conv1/weights:0&apos; shape=(5, 5, 32, 32) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;image_filters/conv1/biases:0&apos; shape=(32,) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;image_filters/conv2/weights:0&apos; shape=(5, 5, 32, 32) dtype=float32_ref&gt;</span><br><span class="line">&lt;tf.Variable &apos;image_filters/conv2/biases:0&apos; shape=(32,) dtype=float32_ref&gt;</span><br></pre></td></tr></table></figure>
+<p>👆的程序虽然调用了两次函数，但是引用了变量变量的机制，我们只创建了一次变量。实现了变量共享。</p>
 
       
     </div>
@@ -398,15 +425,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/15/在Markdown中使用图床的示例/" rel="next" title="在Markdown中使用图床的示例">
+                <i class="fa fa-chevron-left"></i> 在Markdown中使用图床的示例
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/15/在Markdown中使用图床的示例/" rel="prev" title="在Markdown中使用图床的示例">
-                在Markdown中使用图床的示例 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -556,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#First-Blog"><span class="nav-number">1.</span> <span class="nav-text">First Blog</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow中变量共享的问题"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow中变量共享的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种方式定义变量"><span class="nav-number">1.1.</span> <span class="nav-text">三种方式定义变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-placeholder-方式"><span class="nav-number">1.1.1.</span> <span class="nav-text">tf.placeholder()方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Variable-方式"><span class="nav-number">1.1.2.</span> <span class="nav-text">tf.Variable()方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-get-variable-方式"><span class="nav-number">1.1.3.</span> <span class="nav-text">tf.get_variable()方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.1.4.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间和变量空间"><span class="nav-number">1.2.</span> <span class="nav-text">命名空间和变量空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Variable-创建变量"><span class="nav-number">1.2.1.</span> <span class="nav-text">tf.Variable()创建变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用tf-get-variable-创建变量"><span class="nav-number">1.2.2.</span> <span class="nav-text">用tf.get_variable()创建变量</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -719,9 +746,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/03/15/First Blog/';
-          this.page.identifier = '2018/03/15/First Blog/';
-          this.page.title = 'First Blog';
+          this.page.url = 'http://yoursite.com/2018/03/24/Tensorflow中变量共享的问题/';
+          this.page.identifier = '2018/03/24/Tensorflow中变量共享的问题/';
+          this.page.title = 'Tensorflow中变量共享的问题';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://chenmy.disqus.com/embed.js';
