@@ -286,6 +286,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/经典卷积神经网络模型：LeNet-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenmy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/26/经典卷积神经网络模型：LeNet-5/" itemprop="url">经典卷积神经网络模型：LeNet-5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T22:36:42+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/26/经典卷积神经网络模型：LeNet-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/26/经典卷积神经网络模型：LeNet-5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="经典卷积神经网络模型：LeNet-5"><a href="#经典卷积神经网络模型：LeNet-5" class="headerlink" title="经典卷积神经网络模型：LeNet-5"></a>经典卷积神经网络模型：LeNet-5</h1><p>最近在看CaiCloud的TensorFlow框架这本书，刚好看到卷积这一章，顺便做个笔记，以免边看边忘🌝（￣。。￣）</p>
+<p>卷积神经网络在图像数据集上有很突出的表现。与全连接神经网络不同的是，卷积神经网络的相邻两层的节点并不是都有连接。<img src="http://i4.bvimg.com/636483/319b6f8d3bbb6261.jpg" alt="Markdown"></p>
+<p>👆图就是一个卷积神经网络的基本架构图。图中可以看出，卷积神经网络前几层的每一个节点都只与上一层的部分节点相连。一个神经网络主要由👇五种结构组成：</p>
+<ol>
+<li>输入层</li>
+<li>卷积层</li>
+<li>池化层</li>
+<li>全连接层</li>
+<li>softmax层</li>
+</ol>
+<p>以LeNet-5的TensorFlow实现为例了解每一层的作用的具体功能。</p>
+<h2 id="神经网络的输入"><a href="#神经网络的输入" class="headerlink" title="神经网络的输入"></a>神经网络的输入</h2><p>因为LeNet-5解决的是MNIST数字识别问题，所以输入是原始图像的像素28×28×1。卷积神经网络的输入层为一个三维矩阵，所以输入的数据格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32,[</span><br><span class="line">        #第一维表示一个batch中样例的个数</span><br><span class="line">        BATCH_SIZE,</span><br><span class="line">        mnist_inference.IMAGE_SIZE,</span><br><span class="line">        mnist_inference.IMAGE_SIZE,</span><br><span class="line">        #图片的深度，对于RGB图像为3</span><br><span class="line">        mnist_inference.NUM_CHANNEL],</span><br><span class="line">        name = &apos;x-input&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="神经网络的参数"><a href="#神经网络的参数" class="headerlink" title="神经网络的参数"></a>神经网络的参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">#配置神经网络的参数</span><br><span class="line">INPUT_NODE = 784</span><br><span class="line">OUTPUT_NODE = 10</span><br><span class="line"></span><br><span class="line">IMAGE_SIZE = 28</span><br><span class="line">NUM_CHANNELS = 1</span><br><span class="line">NUM_LABELS = 10</span><br><span class="line"></span><br><span class="line">#第一层卷积的尺寸和深度</span><br><span class="line">CONV1_DEEP = 32</span><br><span class="line">CONV1_SIZE = 5</span><br><span class="line"></span><br><span class="line">#第二层卷积的尺寸和深度</span><br><span class="line">CONV2_DEEP = 64</span><br><span class="line">CONV2_SIZE = 5</span><br><span class="line"></span><br><span class="line">#全连接层节点的个数</span><br><span class="line">FC_SIZE = 512</span><br></pre></td></tr></table></figure>
+<h2 id="卷积网络前向传播过程"><a href="#卷积网络前向传播过程" class="headerlink" title="卷积网络前向传播过程"></a>卷积网络前向传播过程</h2><h3 id="layer1-conv1-卷积层"><a href="#layer1-conv1-卷积层" class="headerlink" title="layer1-conv1 卷积层"></a>layer1-conv1 卷积层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def inferecne(input_tensor,train,regularizer):</span><br><span class="line">    with tf.variabel_scope(&apos;layer1-conv1&apos;):</span><br><span class="line">        conv1_weights = tf.get_variable(</span><br><span class="line">        &quot;weight&quot;,[CONV1_SIZE,CONV1_SIZE,NUM_CHANNELS,CONV1_DEEP],</span><br><span class="line">        initializer=tf.truncated_normal_initializer(stddev=0.1))</span><br><span class="line">        conv1_biases = tf.get_variable(&quot;bias&quot;,[CONV1_DEEP],initializer=tf.constant_initializer(0.0)</span><br><span class="line">        conv1 = tf.nn.conv2d(input_tensor,conv1_weights,strides=[1,1,1,1],padding=&apos;SAME&apos;)</span><br><span class="line">        relu1 = tf.nn.relu(tf.nn.bias_add(conv1,conv1_biases))</span><br></pre></td></tr></table></figure>
+<h3 id="layer2-pool1-最大池化层"><a href="#layer2-pool1-最大池化层" class="headerlink" title="layer2-pool1 最大池化层"></a>layer2-pool1 最大池化层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with tf.name_variable(&apos;layer2-pool1&apos;)</span><br><span class="line">    pool1 = tf.nn.max_pool(relu1,ksize=[1,2,2,1],strides=[1,2,2,1],padding=&apos;SAME&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="layer3-conv2-第二层卷积层"><a href="#layer3-conv2-第二层卷积层" class="headerlink" title="layer3-conv2 第二层卷积层"></a>layer3-conv2 第二层卷积层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">with tf.variable_scope(&apos;layer3-conv2&apos;):</span><br><span class="line">    conv2_weights = tf.get_variable(</span><br><span class="line">        &quot;weight&quot;,[CONV2_SIZE,CONV2_SIZE,CONV2_DEEP,CONV2_DEEP],</span><br><span class="line">        initializer=tf.truncated_normal_initializer(stddev=0.1))</span><br><span class="line">        conv2_biases = tf.get_variable(&quot;bias&quot;,[CONV1_DEEP],initializer=tf.constant_initializer(0.0)</span><br><span class="line">    conv2 = tf.nn.conv2d(pool1,conv2_weights,strides=[1,1,1,1],padding=&apos;SAME&apos;)</span><br><span class="line">    relu2 = tf.nn.relu(tf.nn.bias_add(conv2,conv2_biases))</span><br></pre></td></tr></table></figure>
+<h3 id="layer4-pool2-池化层"><a href="#layer4-pool2-池化层" class="headerlink" title="layer4-pool2 池化层"></a>layer4-pool2 池化层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with tf.name_scope(&apos;layer4-pool1&apos;):</span><br><span class="line">    pool2 = tf.nn.max_pool(relu2,ksize=[1,2,2,1],strides=[1,2,2,1],padding=&apos;SAME&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="对数据进行处理进入全连接层"><a href="#对数据进行处理进入全连接层" class="headerlink" title="对数据进行处理进入全连接层"></a>对数据进行处理进入全连接层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pool_shape = pool2.get_shape().as_list()</span><br><span class="line">nodes = pool_shape[1]*pool_shape[2]*pool_shape[3]</span><br><span class="line">#pool_shape[0]中为一个batch中数据的个数</span><br><span class="line">reshaped =tf.reshape(pool2,[pool_shape[0],nodes)</span><br></pre></td></tr></table></figure>
+<h3 id="layer5-fc1全连接层"><a href="#layer5-fc1全连接层" class="headerlink" title="layer5-fc1全连接层"></a>layer5-fc1全连接层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#在这一层中加入了dropout策略避免了过拟合的问题</span><br><span class="line">with tf.variable_scope(&apos;layer5-fc1&apos;):</span><br><span class="line">    fc1_weights = tf.get_variable(&quot;weight&quot;,[nodes,FC_SIZE],initializer=tf.truncated_normal_initializer(stddev=0.1))</span><br><span class="line">    if regularizer!=None:</span><br><span class="line">        tf.add_to_collection(&apos;losses&apos;,regularizer(fc1_weights))</span><br><span class="line">        fc1_biases = tf.get_variable(&quot;bias&quot;,[FC_SIZE],initializer=tf.constant_initializer(0.1))</span><br><span class="line">        fc1 = tf.nn.relu(tf.matmul(reshaped,fc1_weights)+fc1_biases)</span><br><span class="line">    if train:</span><br><span class="line">        fc1 = tf.nn.dropout(fc1,0.5)</span><br></pre></td></tr></table></figure>
+<h3 id="layer6-fc2全连接层"><a href="#layer6-fc2全连接层" class="headerlink" title="layer6-fc2全连接层"></a>layer6-fc2全连接层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#这一层的输入为512的向量，输出为10的向量</span><br><span class="line">with tf.variable_scope(&apos;layer6-fc2&apos;):</span><br><span class="line">    fc2_weights = tf.get_variable(&quot;weight&quot;,[FC_SIZE,NUM_LABELS],initializer=tf.truncated_normal_initializer(stddev=0.1))</span><br><span class="line">    if regularizer!=None:</span><br><span class="line">        tf.add_to_collection(&apos;losses&apos;,regularizer(fc2_weights))</span><br><span class="line">        fc2_biases = tf.get_variable(&quot;bias&quot;,[NUM_LABELS],initializer=tf.constant_initializer(0.1))</span><br><span class="line">        logit = tf.matmul(fc1,fc2_weights)+fc2_biases</span><br><span class="line">#返回第六层输出</span><br><span class="line">return logit</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/Tensorflow中变量共享的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -750,7 +901,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
